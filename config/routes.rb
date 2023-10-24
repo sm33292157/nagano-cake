@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: "homes#top"
+  get 'homes/about' => "homes#about", as: 'about'
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -17,8 +19,6 @@ Rails.application.routes.draw do
   end
   
   scope module: :public do
-    root to: "homes#top"
-    get 'homes/about' => "homes#about", as: 'about'
     resources :items, only: [:index, :show]
     resources :cart_items, expect: [:show, :edit, :new]
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all'

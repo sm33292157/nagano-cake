@@ -1,20 +1,25 @@
-<nav class="navber navber-expand-md navber-dark bg-dark">
+<nav class="navbar navbar-expand-md shadow-sm bg-warning mb-5" style="padding: 0rem 0;">
   <div class="container">
-    <div class="row">
-      <ul class="navber-nav ml-auto">
-        <li class="nav-item">
-          <%= link_to "マイページ", customers_mypage_path(current_customer), class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "商品一覧", items_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "カート", cart_items_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link" %>
-        </li>
-      </ul>
-    </div>
+    <ul class="logo_area justify-content-start">
+      <li class="navbar-brand">
+        <%= link_to "/", class: "nav-link" do %>
+          <%= image_tag 'logo_cake.PNG', class: "logo" %>
+        <% end %>
+      </li>
+    </ul>
+    <ul class="navbar-nav justify-content-end">
+      <li class="nav-item mr-3">
+        <%= link_to "マイページ", customers_mypage_path(current_customer), class: "nav-link text-white border border-white rounded-pill" %>
+      </li>
+      <li class="nav-item mr-3">
+        <%= link_to "商品一覧", items_path, class: "nav-link text-white border border-white rounded-pill" %>
+      </li>
+      <li class="nav-item mr-3">
+        <%= link_to "カート", cart_items_path, class: "nav-link text-white border border-white rounded-pill" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link text-white border border-white rounded-pill" %>
+      </li>
+    </ul>
   </div>
 </nav>
