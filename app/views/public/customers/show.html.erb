@@ -1,1 +1,52 @@
-顧客詳細
+<div class="container">
+  <div class="row">
+    <div class="col-md-7">
+      <h4 class="text-secondary bg-warning">マイページ</h4>
+      <h5>登録情報</h5>
+      <div class="action">
+        <%= link_to "編集する", customers_infomation_edit_path, class: "btn btn-success" %>
+      </div>
+      
+      <!-- customer.each -->
+      <table class="table table-bordered mt-3 mb-4">
+        <tbody>
+          <tr>
+            <td class="table-secondary">氏名</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="table-secondary">カナ</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="table-secondary">郵便番号</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="table-secondary">住所</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="table-secondary">電話番号</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="table-secondary">メールアドレス</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- end -->
+      
+      <h5>配送先</h5>
+      <div class="action">
+        <%= link_to "一覧を見る", shipping_address_index_path, class: "btn btn-primary" %>
+      </div>
+        
+      <h5>注文履歴</h5>
+      <div class="action">
+         <%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

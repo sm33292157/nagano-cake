@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  root to: "homes#top"
-  get 'homes/about' => 'homes#about', as: 'about'
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -11,7 +9,7 @@ Rails.application.routes.draw do
   }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   namespace :admin do
-    root 'homes#top'
+    get '/' => "homes#top"
     resources :items, except: [:destroy]
     resources :genres, except: [:new, :show, :destroy]
     resources :orders, only: [:index, :show, :update]
@@ -19,6 +17,8 @@ Rails.application.routes.draw do
   end
   
   scope module: :public do
+    root to: "homes#top"
+    get 'homes/about' => "homes#about", as: 'about'
     resources :items, only: [:index, :show]
     resources :cart_items, expect: [:show, :edit, :new]
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
