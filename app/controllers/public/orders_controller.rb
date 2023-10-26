@@ -1,2 +1,5 @@
-class Public::OedersController < ApplicationController
+class Public::OrdersController < ApplicationController
+  
+  def index
+  end
 end

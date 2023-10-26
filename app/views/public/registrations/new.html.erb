@@ -50,7 +50,7 @@
               <tr>
                 <th>パスワード(確認用)</th>
                 <td></td>
-                <td><%= f.password_confimation, class: 'form-control' %></td>
+                <td><%= f.password_field :password_confimation, class: 'form-control' %></td>
               </tr>
                 <td></td>
                 <td></td>
@@ -58,8 +58,9 @@
             </tbody>
           </table>
         </div>
+      <% end %>
       <h2>既に登録済みの方</h2>
-      <%= link_to "こちら", new_session_path, class: 'login-link' %> からログインしてください。
+      <%= link_to "こちら", new_customer_session_path, class: 'login-link' %> からログインしてください。
     </div>
   </div>
 </div>
