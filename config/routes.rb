@@ -3,13 +3,15 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
+  root to: 'homes#top'
+  get '/about' => 'homes#about'
   
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
+  get 'admin', to: 'admin/home#top'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   namespace :admin do
-    root to: 'homes#top'
     resources :items, except: [:destroy]
     resources :genres, except: [:new, :show, :destroy]
     resources :orders, only: [:index, :show, :update]
@@ -17,8 +19,6 @@ Rails.application.routes.draw do
   end
   
   scope module: :public do
-    root to: 'homes#top'
-    get '/about' => 'homes#about'
     resources :items, only: [:index, :show]
     resources :cart_items, expect: [:show, :edit, :new]
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all'

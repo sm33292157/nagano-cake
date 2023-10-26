@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-7">
+      <h4 class="mb-5">ジャンル編集</h4>
+      <%= form_with model: @genre, url: edit_admin_genre_path do |f| %>
+        <table class="table table-borderless">
+          <tr>
+            <td>ジャンル名</td>
+            <td><%= f.text_field :name, class: 'form-control' %></td>
+            <td><%= f.submit "変更する", class: 'btn btn-success' %></td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>
