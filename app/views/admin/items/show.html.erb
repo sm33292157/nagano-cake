@@ -1,1 +1,40 @@
-商品詳細
+<div class="contanir">
+  <div clas="row">
+    <div class="offset-2 col-md-10 mb-5">
+      <h4>商品詳細</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="offset-1 col-md-2">
+      <%= image_tag @item.get_image %>
+    </div>
+    <div class="offset-1 col-md-8">
+      <table class="table-borderless">
+        <tbody>
+          <tr>
+            <td>商品名</td>
+            <td><%= @item.name %></td>
+          </tr>
+          <tr>
+            <td>商品説明</td>
+            <td><%= @item.introduction %></td>
+          </tr>
+          <tr>
+            <td>ジャンル</td>
+            <td><%= @item.genre.name %></td>
+          </tr>
+          <tr>
+            <td>税込価格（税抜価格)</td>
+            <td><%= @item.price %>(<%= @item.add_tax_price.to_s(:dalimited) %>) 円</td>
+          </tr>
+          <tr>
+            <td>販売ステータス</td>
+          </tr>
+        </tbody>
+      </table>
+      <div>
+        <%= link_to "編集する", edit_admin_item_path(@item.id), class: 'btn btn-success' %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -14,13 +14,18 @@ class Admin::GenresController < ApplicationController
     if @genre.save
       flash[:notice] = "You have created Genre successfully"
       redirect_to admin_genres_path
+    else
+      render :index
     end
   end
   
   def update
     @genre = Genre.find(params[:id])
     if @genre.update(genre_params)
+      flash[:notice] = "You have updated Genre successfully"
       redirect_to admin_genres_path
+    else
+      render :edit
     end
   end
   
