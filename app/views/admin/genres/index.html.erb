@@ -12,15 +12,20 @@
         </table>
       <% end %>
     </div>
-    <div class="offset-1 col-md-5">
-      <table>
+    <div class="offset-1 col-md-4">
+      <table class="table">
         <thead class="thead-light">
-          <th>ジャンル名</th>
+          <tr>
+            <th>ジャンル</th>
+            <th></th>
+          </tr>
         </thead>
         <tbody>
-          <%= @genres.each do |genre| %>
+          <% @genres.each do |genre| %>
+          <tr>
             <td><%= genre.name %></td>
-            <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class: 'btn btn-success' %></td>
+            <td class="text-right"><%= link_to "編集する", edit_admin_genre_path(genre.id), class: 'btn btn-success' %></td>
+          </tr>
           <% end %>
         </tbody>
       </table>
