@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :items, except: [:destroy]
     resources :genres, except: [:new, :show, :destroy]
     resources :orders, only: [:index, :show, :update]
-    resources :customers, only: [:index, :show, :edit, :updata]
+    resources :customers, only: [:index, :show, :edit, :update]
   end
   
   scope module: :public do
@@ -30,6 +30,6 @@ Rails.application.routes.draw do
     resources :orders, except: [:edit, :update, :destroy]
     get '/orders/thanks' => 'orders#thanks'
     get '/orders/confirm' => 'orders#confirm'
-    resources :shipping_addresses, expect: [:show, :new]
+    resources :shipping_addresses, expect: [:show]
   end
 end

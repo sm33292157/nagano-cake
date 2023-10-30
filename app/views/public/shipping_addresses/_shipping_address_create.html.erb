@@ -1,0 +1,22 @@
+<%= form_with model: shipping_address, url: shipping_addresses_path do |f| %>
+  <table class="table table-borderless">
+    <tbody>
+      <tr>
+        <td><%= f.label "郵便番号(ハイフンなし)" %></td>
+        <td><%= f.text_field :postal_code %></td>
+      </tr>
+      <tr>
+        <td><%= f.label "住所" %></td>
+        <td><%= f.text_field :address %></td>
+      </tr>
+      <tr>
+        <td><%= f.label "宛名" %></td>
+        <td><%= f.text_field :name %></td>
+        <td></td>
+        <td>
+          <%= f.submit "新規登録", class: 'btn btn-success' %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>
