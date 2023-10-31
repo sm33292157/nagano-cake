@@ -1,8 +1,8 @@
 class Public::ShippingAddressesController < ApplicationController
   
   def index
-    @shipping_address = ShippingAddress.new
     @shipping_addresses = current_customer.shipping_addresses
+    @shipping_address = ShippingAddress.new
   end
   
   def create
@@ -33,6 +33,6 @@ class Public::ShippingAddressesController < ApplicationController
   private
   
   def shipping_address_params
-    params.require(:shipping_address).permit(:name, :address, :postal_code)
+    params.require(:shipping_address).permit(:name, :address, :postal_code, :customer_id)
   end
 end

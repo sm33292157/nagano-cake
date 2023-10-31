@@ -30,6 +30,6 @@ Rails.application.routes.draw do
     resources :orders, except: [:edit, :update, :destroy]
     get '/orders/thanks' => 'orders#thanks'
     get '/orders/confirm' => 'orders#confirm'
-    resources :shipping_addresses, expect: [:show]
+    resources :shipping_addresses, expect: [:show, :new]
   end
 end
