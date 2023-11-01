@@ -32,7 +32,6 @@
   </div>
   
   <div class="col-md-8">
-    <% @shipping_addresses.each do |shipping_address| %>
     <table class="table table-bordered">
       <thead class="thead-light">
         <tr>
@@ -42,6 +41,7 @@
           <th></th>
         </tr>
       </thead>
+      <% @shipping_addresses.each do |shipping_address| %>
       <tbody>
         <tr>
           <td><%= shipping_address.postal_code %></td>
@@ -53,8 +53,8 @@
           </td>
         </tr>
       </tbody>
+      <% end %>
     </table>
-    <% end %>
   </div>
   </div>
 </div>
