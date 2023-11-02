@@ -38,11 +38,13 @@
           <tr>
             <td></td>
             <td><%= f.submit "編集内容を保存", class: 'btn btn-success' %></td>
-            <td><%= f.submit "退会する", class: 'btn btn-danger' %></td>
           </tr>
         </tbody>
       </table>
       <% end %>
+      <div class="col-2">
+        <%= link_to "退会する", withdraw_confirm_path(@customer), class: 'btn btn-danger' %>
+      </div>
     </div>
   </div>
 </div>
