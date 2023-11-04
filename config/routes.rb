@@ -20,8 +20,8 @@ Rails.application.routes.draw do
   
   scope module: :public do
     resources :items, only: [:index, :show]
-    resources :cart_items, expect: [:show, :edit, :new]
-    delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
+    resources :cart_items, except: [:show, :edit, :new]
+    delete 'destroy_all' => 'cart_items#destroy_all'
     resources :customers, only: [:update]
     get '/customers/withdraw_confirm' => 'customers#withdraw_confirm', as: "withdraw_confirm"
     patch '/customers/withdraw' => 'customers#withdraw', as: "withdraw"

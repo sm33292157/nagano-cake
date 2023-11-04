@@ -1,34 +1,53 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8">
-      <h2>ログイン</h2>
-      <h6>会員の方はこちらからログイン</h6>
-      <%= form_with model: @customer, url: customer_session_path do |f| %>
-      
-      <div class="form-group">
-        メールアドレス <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
-      
-      <div class="form-group">
-        パスワード <%= f.password_field :password, autocomplete: "current-password" %>
-      </div>
-      
-      <% if devise_mapping.rememberable? %>
-        <div class="field">
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
-        </div>
-      <% end %>
-      
-      <div class="actions">
-        <%= f.submit "Log in", class: "btn btn-primary" %>
-      </div>
-      <% end %>
-    
-      <%= render "public/shared/links" %>
-      
-      <h2>会員登録がお済みでない方</h2>
-      <%= link_to "こちら", new_customer_registration_path %>　から新規登録を行なってください。
+    <div class="col mb-5">
+      <h4>ログイン</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col offset-1 mb-2">
+      <h5>会員の方はこちらからログイン</h5>
+    </div>
+  </div>
+  <%= form_with model: @customer, url: customer_session_path do |f| %>
+  <div class="row">
+    <div class="col-md-7 offset-2">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td>メールアドレス</td>
+            <td><%= f.email_field :email, autofocus: true, autocomplete: "email", size: 40 %></td>
+          </tr>
+          <tr>
+            <td>パスワード</td>
+            <td><%= f.password_field :password, autocomplete: "current-password", size: 40 %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <% if devise_mapping.rememberable? %>
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><%= f.submit "ログイン", class: "btn btn-primary pr-5 pl-5 pt-2 pb-2 btn-sm" %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <% end %>
+  <div class="row">
+    <div class="col offset-1 mt-5 mb-3">
+      <h5>会員登録がお済みでない方</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="offset-2">
+      <%= link_to "こちら", new_customer_registration_path %>　から新規登録を行ってください。
     </div>
   </div>
 </div>
