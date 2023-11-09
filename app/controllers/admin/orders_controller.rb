@@ -5,6 +5,10 @@ class Admin::OrdersController < ApplicationController
     @addresses = current_customer.addresses.all
   end
   
+  def show
+    @order = Order.find(params[:id])
+  end
+  
   private
   
   def order_params
