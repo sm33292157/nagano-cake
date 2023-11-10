@@ -31,8 +31,8 @@ Rails.application.routes.draw do
     get '/customers/mypage' => 'customers#show'
     get 'customers/infomation/edit' => 'customers#edit'
     resources :orders, except: [:edit, :update, :destroy]
-    get '/orders/thanks' => 'orders#thanks'
-    get '/orders/confirm' => 'orders#confirm'
+    get 'thanks' => 'orders#thanks'
+    get 'confirm' => 'orders#confirm'
     resources :shipping_addresses, expect: [:show, :new]
   end
 end
