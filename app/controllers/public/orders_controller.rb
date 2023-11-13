@@ -17,7 +17,7 @@ class Public::OrdersController < ApplicationController
       @order.name = current_customer.last_name + current_customer.first_name
       
     elsif params[:order][:select_address] == "1"
-      @shipping_address = Address.find(params[:order][:address_id])
+      @shipping_address = ShippingAddress.find(params[:order][:address_id])
       @order.postal_code = @shipping_address.postal_code
       @order.address = @shipping_address.address
       @order.name = @shipping_address.name
@@ -38,27 +38,27 @@ class Public::OrdersController < ApplicationController
     @order.save
     
     current_customer.cart_items.each do |cart_item|
-      @ordered_item = OrderedItem.new
-      @ordered_item.item_id = cart_item.item_id
-      @ordered_item.amount = cart_item.amount
-      @ordered_item.add_tax_price = (cart_item.price * 1.1).floor
-      @ordered_item.order_id = @order.id
-      @ordered_item.save
+      @order_details = OrderDetail.new
+      @order_details.item_id = cart_item.item.id
+      @order_details.amount = cart_item.amount
+      @order_details.payment_amount = cart_item.item.with_tax_price
+      @order_details.order_id = @order.id
+      @order_details.save
     end
-    current_custoemr.cart_item.destroy_all
+    current_customer.cart_items.destroy_all
     redirect_to orders_thanks_path
   end
   
   def index
-    @orders = current_customer.orders
+    @orders = current_customer.orders.all
   end
   
   def thanks
   end
   
   def show
-    #@order = Order.find(params[:id])
-    #@ordered_items = @order.ordered_items
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details.all
   end
   
   private

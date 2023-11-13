@@ -1,16 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class="offset-1">
+    <div class="offset-1 mb-3">
       <h4>注文履歴詳細</h4>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-10">
-      <table class="borderless">
+    <div class="col-md-8">
+      <table class="table table-borderless">
         <tbody>
           <tr>
             <td><strong>購入者</strong></td>
-            <td><%= @order.last_name %> <%= @order.first_name %></td>
+            <td><%= @order.customer.last_name %><%= @order.customer.first_name %></td>
           </tr>
           <tr>
             <td><strong>注文日</strong></td>
@@ -18,15 +18,24 @@
           </tr>
           <tr>
             <td><strong>配送先</strong></td>
-            <td></td>
+            <td>
+              〒<%= @order.postal_code %>
+              <%= @order.address %><br>
+              <%= @order.name %>
+            </td>
           </tr>
           <tr>
             <td><strong>支払方法</strong></td>
-            <td></td>
+            <td><%= @order.payment_method_i18n %></td>
           </tr>
           <tr>
-            <td>注文ステータス</td>
-            <td></td>
+            <td><strong>注文ステータス</strong></td>
+            <td>
+              <%= form_with model: @order, url: admin_order_path(@order.id) do |f| %>
+                <%= f.select :order_status, Order.order_statuses_i18n.invert %>
+                <%= f.submit "更新", class: 'btn btn-success ml-4' %>
+              <% end %>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -34,7 +43,6 @@
   </div>
   <div class="row">
     <div class="col-md-8">
-      <% @items.each do |item| %>
       <table class="table border-top">
         <thead class="thead-light">
           <tr>
@@ -45,20 +53,38 @@
             <th><strong>製作ステータス</strong></th>
           </tr>
         </thead>
+        <% @order.order_details.each do |order_detail| %>
         <tbody>
           <tr>
-            <td><%= item.name %></td>
-            <td><%= item.price %></td>
-            <td><%= item.amount %></td>
-            <td><%= item. %></td>
-            <td><%= item.maiking_status %></td>
+            <td><%= order_detail.item.name %></td>
+            <td><%= order_detail.item.with_tax_price %></td>
+            <td><%= order_detail.amount %></td>
+            <td></td>
+            <td>
+              
+            </td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-md-4 mt-5">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td><strong>商品合計</strong></td>
+            <td><%= @total %>円</td>
+          </tr>
+          <tr>
+            <td><strong>送料</strong></td>
+            <td><%= @order.shipping_fee %>円</td>
+          </tr>
+          <tr>
+            <td><strong>請求金額合計</strong></td>
+            <td>円</td>
           </tr>
         </tbody>
       </table>
-      <% end %>
-    </div>
-    <div class="col-md-4">
-      
     </div>
   </div>
 </div>

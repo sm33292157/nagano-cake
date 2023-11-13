@@ -40,11 +40,11 @@
           </tr>
           <tr>
             <td class="table-active">商品合計</td>
-            <td></td>
+            <td><%= @total %></td>
           </tr>
           <tr>
             <td class="table-active">請求金額</td>
-            <td><%= @total %></td>
+            <td><%= @total + @order.shipping_fee %></td>
           </tr>
         </tbody>
       </table>
@@ -70,9 +70,9 @@
   </div>
   <div class="text-center mt-5">
     <%= form_with model: @order, url: orders_path, method: :post do |f| %>
-      <%= f.hidden_field :customer_id %>
+      <%= f.hidden_field :customer_id, value: current_customer.id %>
       <%= f.hidden_field :shipping_fee %>
-      <%= f.hidden_field :total_payment %>
+      <%= f.hidden_field :payment_amount, value: @total + @order.shipping_fee %>
       <%= f.hidden_field :payment_method %>
       <%= f.hidden_field :name %>
       <%= f.hidden_field :address %>

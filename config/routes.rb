@@ -30,8 +30,8 @@ Rails.application.routes.draw do
     patch '/customers/withdraw' => 'customers#withdraw', as: "withdraw"
     get '/customers/mypage' => 'customers#show'
     get 'customers/infomation/edit' => 'customers#edit'
+     get 'orders/thanks' => 'orders#thanks'
     resources :orders, except: [:edit, :update, :destroy]
-    get 'orders/thanks' => 'orders#thanks'
     post 'orders/confirm' => 'orders#confirm'
     resources :shipping_addresses, expect: [:show, :new]
   end

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-2 offset-1 mb-3">
       <h4>会員情報編集</h4>
     </div>
   </div>
@@ -38,13 +38,11 @@
           <tr>
             <td></td>
             <td><%= f.submit "編集内容を保存", class: 'btn btn-success' %></td>
+            <td><%= link_to "退会する", withdraw_confirm_path(@customer), class: 'btn btn-danger' %></td>
           </tr>
         </tbody>
       </table>
       <% end %>
-      <div class="col-2">
-        <%= link_to "退会する", withdraw_confirm_path(@customer), class: 'btn btn-danger' %>
-      </div>
     </div>
   </div>
 </div>
