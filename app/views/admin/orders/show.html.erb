@@ -61,7 +61,10 @@
             <td><%= order_detail.amount %></td>
             <td></td>
             <td>
-              
+              <%= form_with model: @order_detail, url: admin_order_path(@order.id) do |f| %>
+                <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
+                <%= f.submit "更新", class: 'btn btn-success ml-4' %>
+              <% end %>
             </td>
           </tr>
         </tbody>

@@ -5,17 +5,16 @@ ja:
         credit_card: "クレジットカード"
         transfer: "銀行振込"
       order_status:
-        wait_payment: "入金待ち"
-        confirm_payment: "入金確認"
+        payment_wait: "入金待ち"
+        payment_confirm: "入金確認"
         making: "製作中"
-        preparing_ship: "発送準備中"
+        in_preparation: "発送準備中"
         shipped: "発送済み"
-  enum:
     order_detail:
       making_status:
         impossible: "着手不可"
         waiting: "製作待ち"
-        production: "制作中"
+        production: "製作中"
         complete: "製作完了"
   activerecord:
     errors:

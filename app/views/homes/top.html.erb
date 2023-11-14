@@ -1,6 +1,9 @@
-<div class="container p-5">
+<div class="container">
   <div class="row">
-    <div class="col-md-8 offset-md-1">
+    <div class="col-md-2">
+      as
+    </div>
+    <div class="col-md-8">
       <div class="card">
         <%= image_tag 'top.jpg', alt: 'Image', class: "card-image" %>
         <div class="card-img-overlay d-flex">
@@ -16,18 +19,22 @@
   </div>
   
   <div class="row">
-    <div class="col offset-1">
+    <div class="col offset-2">
       <h4 class="mt-3"><strong>新着商品</strong></h4>
-      <!-- item.each -->
-      <div class="new-items">
-        <!-- 商品画像 -->
-        <!--商品名 -->
-        <!-- 値段 -->
-      </div>
-      
-      <ul class="pager">
-        <%= link_to "すべての商品を見る >", items_path, class: "link-underline-primary" %>
-      </ul>
     </div>
   </div>
+  <div class="row">
+    <% @items.each do |item| %>
+      <div class="col-md-3 offset-2">
+        <%= image_tag item.get_image(150, 150) %><br>
+        <%= link_to item_path(item.id), class: 'text-dark' do %>
+          <%= item.name %>
+        <% end %><br>
+        ¥<%= item.price %>
+      </div>
+    <% end %>
+  </div>
+  <ul class="pager">
+    <%= link_to "すべての商品を見る >", items_path, class: "link-underline-primary" %>
+  </ul>
 </div>
