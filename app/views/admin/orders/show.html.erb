@@ -31,7 +31,7 @@
           <tr>
             <td><strong>注文ステータス</strong></td>
             <td>
-              <%= form_with model: @order, url: admin_order_path(@order.id) do |f| %>
+              <%= form_with model: @order, url: admin_order_path do |f| %>
                 <%= f.select :order_status, Order.order_statuses_i18n.invert %>
                 <%= f.submit "更新", class: 'btn btn-success ml-4' %>
               <% end %>
@@ -60,8 +60,8 @@
             <td><%= order_detail.item.with_tax_price %></td>
             <td><%= order_detail.amount %></td>
             <td></td>
-            <td>
-              <%= form_with model: @order_detail, url: admin_order_path(@order.id) do |f| %>
+            <td><!-- modelは表示しなくていい-->
+              <%= form_with model: order_detail, url: admin_order_path(@order.id), method: :patch do |f| %>
                 <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
                 <%= f.submit "更新", class: 'btn btn-success ml-4' %>
               <% end %>
