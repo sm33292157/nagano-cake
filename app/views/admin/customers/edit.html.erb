@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-10">
       <h4>
         <%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集
       </h4>
@@ -13,13 +13,11 @@
           </tr>
           <tr>
             <td>氏名</td>
-            <td><%= f.text_field :last_name %></td>
-            <td><%= f.text_field :first_name %></td>
+            <td><%= f.text_field :last_name %> <%= f.text_field :first_name, class: 'ml-3' %></td>
           </tr>
           <tr>
             <td>フリガナ</td>
-            <td><%= f.text_field :last_name_kana %></td>
-            <td><%= f.text_field :first_name_kana %></td>
+            <td><%= f.text_field :last_name_kana %> <%= f.text_field :first_name_kana, class: 'ml-3' %></td>
           </tr>
           <tr>
             <td>郵便番号</td>
@@ -27,7 +25,7 @@
           </tr>
           <tr>
             <td>住所</td>
-            <td colspan="2"><%= f.text_field :address %></td>
+            <td><%= f.text_field :address, size: 50 %></td>
           </tr>
           <tr>
             <td>電話番号</td>

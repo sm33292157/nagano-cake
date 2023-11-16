@@ -11,6 +11,6 @@ class Order < ApplicationRecord
   end
   
   def subtotal
-    item.with_tax_price * amount
+    payment_amount - shipping_fee
   end
 end

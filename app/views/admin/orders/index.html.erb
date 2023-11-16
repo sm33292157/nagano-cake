@@ -24,7 +24,7 @@
               <% end %>
             </td>
             <td><%= order.name %></td>
-            <td></td>
+            <td><%= order.order_details.sum(:amount) %></td>
             <td><%= order.order_status_i18n %></td>
           </tr>
         </tbody>

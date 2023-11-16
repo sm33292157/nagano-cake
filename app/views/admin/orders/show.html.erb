@@ -59,10 +59,10 @@
             <td><%= order_detail.item.name %></td>
             <td><%= order_detail.item.with_tax_price %></td>
             <td><%= order_detail.amount %></td>
-            <td></td>
-            <td><!-- modelは表示しなくていい-->
-              <%= form_with model: order_detail, url: admin_order_path(@order.id), method: :patch do |f| %>
-                <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
+            <td><%= order_detail.item.with_tax_price * order_detail.amount %></td>
+            <td>
+              <%= form_with model: order_detail, url: admin_order_detail_path(order_detail), method: :patch do |f| %>
+                <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %><!--　複数形にして全て取り出す -->
                 <%= f.submit "更新", class: 'btn btn-success ml-4' %>
               <% end %>
             </td>
@@ -76,7 +76,7 @@
         <tbody>
           <tr>
             <td><strong>商品合計</strong></td>
-            <td><%= @total %>円</td>
+            <td><%= @order.subtotal %>円</td>
           </tr>
           <tr>
             <td><strong>送料</strong></td>
@@ -84,7 +84,7 @@
           </tr>
           <tr>
             <td><strong>請求金額合計</strong></td>
-            <td>円</td>
+            <td><%= @order.payment_amount %>円</td>
           </tr>
         </tbody>
       </table>

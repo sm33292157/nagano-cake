@@ -8,10 +8,10 @@ class Admin::OrderDetailsController < ApplicationController
     #製作ステータスを更新
     if @order_detail.update(order_detail_params)
       #注文に紐づく注文詳細の製作ステータスが製作中になったら、注文ステータスを製作中にする
-      if @order_detail.making_status == 'production'
+      if @order_detail.making_status == "production"
         @order.update(order_status: :making)
       #製作ステータスが全て製作完了になったら、注文ステータスを発送準備中にする
-      elsif @order_detail.making_statuses_all == 'complete'
+      elsif @order.order_details.count == @order.order_details.where(making_status: :complete).count
         @order.update(order_status: :in_preparation)
       end
     end
@@ -21,6 +21,6 @@ class Admin::OrderDetailsController < ApplicationController
   private
   
   def order_detail_params
-    params.require(:order_detail).permit(:maiking_status)
+    params.require(:order_detail).permit(:making_status, :order_id)
   end
 end
