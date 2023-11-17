@@ -2,6 +2,9 @@ class Public::ItemsController < ApplicationController
   
   def index
     @items = Item.all
+    @genres = Genre.all
+    @genre_id = params[:genre_id]
+    @items = Item.where(genre_id: @genre_id)
   end
   
   def show
@@ -20,6 +23,12 @@ class Public::ItemsController < ApplicationController
     else
       render 'public/items/edit'
     end
+  end
+  
+  def genre
+    @genre_id = params[:genre_id]
+    @items = Item.where(genre_id: @genre_id)
+    @genres = Genre.all
   end
   
   private

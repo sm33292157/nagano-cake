@@ -36,4 +36,6 @@ Rails.application.routes.draw do
     post 'orders/confirm' => 'orders#confirm'
     resources :shipping_addresses, expect: [:show, :new]
   end
+  
+  get '/genres/genre' => 'genres##genre'
 end
