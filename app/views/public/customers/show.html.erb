@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-md-2 offset-1 text-center mb-4">
-      <h4 class="text-secondary bg-warning rounded-pill">マイページ</h4>
+      <h4><i class="fa-regular fa-address-card"></i>マイページ</h4>
     </div>
   </div>
   <div class="row">
     <div class="col-md-2">
       <h5>登録情報</h5>
     </div>
-      <%= link_to "編集する", customers_infomation_edit_path, class: "btn btn-success" %>
+      <%= link_to "編集する", customers_infomation_edit_path, class: "btn btn-success btn-sm" %>
   </div>
   <div class="row">
     <div class="col-md-6">
@@ -46,12 +46,12 @@
     <div class="col-md-2">
       <h5>配送先</h5>
     </div>
-      <%= link_to "一覧を見る", shipping_addresses_path, class: "btn btn-primary mb-3" %>
+      <%= link_to "一覧を見る", shipping_addresses_path, class: "btn btn-primary btn-sm mb-3" %>
   </div>
   <div class="row">
     <div class="col-md-2">
       <h5>注文履歴</h5>
     </div>
-       <%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %>
+       <%= link_to "一覧を見る", orders_path, class: "btn btn-primary btn-sm" %>
   </div>
 </div>

@@ -37,3 +37,11 @@
   height: 100px;
   width: 100px;
 }
+
+footer {
+  background-color: #cccca3;
+  width: 100%;
+  height: 70px;
+  position: absolute;
+  bottom: 0;
+}

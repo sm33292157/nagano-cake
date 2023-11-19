@@ -6,7 +6,7 @@
   </div>
   <div class="row">
     <div class="col-md-10 offset-1">
-      <table class="table">
+      <table class="table table-hover">
         <thead class="table-active">
           <tr>
             <th><strong>購入日時</strong></th>
@@ -30,6 +30,11 @@
         </tbody>
         <% end %>
       </table>
+      <div class="row", style="text-align: center;">
+        <div class="col-6 offset-5">
+        <%= paginate @orders %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -1,15 +1,16 @@
 class Public::ItemsController < ApplicationController
   
   def index
-    @items = Item.all
+    @items = Item.where(is_active: 1).page(params[:page]).per(8)
     @genres = Genre.all
     @genre_id = params[:genre_id]
-    @items = Item.where(genre_id: @genre_id)
   end
   
   def show
     @item = Item.find(params[:id])
     @cart_item = CartItem.new
+    @genres = Genre.all
+    @genre_id = params[:genre_id]
   end
   
   def edit
