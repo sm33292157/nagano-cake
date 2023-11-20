@@ -11,22 +11,29 @@ class Public::CustomersController < ApplicationController
   
   def update
     @customer = current_customer
-    if @customer.update(customer_params)
+    if params[:id] == "withdraw" # idがwithdrawか否か判別する
+      withdraw
+    elsif @customer.update(customer_params)
       redirect_to customers_mypage_path(current_customer)
+    else
+      render :edit
     end
+  end
+  
+  def withdraw_confirm
   end
   
   def withdraw
-    @customer = Customer.find(current_customer)
-    if @customer.update(is_active: false)
-      sign_out current_customer
+    @customer = current_customer
+    if @customer.update(is_active: false) # 無効状態にする
+      reset_session # ログアウト
     end
     redirect_to root_path
   end
-  
+
   private
   
   def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number, :is_active)
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number, :is_active, :email)
   end
 end

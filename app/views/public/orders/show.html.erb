@@ -38,7 +38,7 @@
         <tbody>
           <tr>
             <td class="table-active">商品合計</td>
-            <td></td>
+            <td><%= (@order.payment_amount - @order.shipping_fee) %></td>
           </tr>
           <tr>
             <td class="table-active">配送料</td>
@@ -70,7 +70,7 @@
             <td><%= order_detail.item.name %></td>
             <td><%= order_detail.item.with_tax_price %></td>
             <td><%= order_detail.amount %></td>
-            <td></td>
+            <td><%= ((order_detail.item.with_tax_price) * (order_detail.amount)) %></td>
           </tr>
         </tbody>
         <% end %>

@@ -1,4 +1,5 @@
 class Admin::OrdersController < ApplicationController
+  before_action :authenticate_admin!
   
   def index
     @orders = Order.page(params[:page])
@@ -8,16 +9,13 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_details = @order.order_details
   end
-  #注文ステータス
-  def update
-    #注文データを取得
-    @order = Order.find(params[:id])
+  
+  def update #注文ステータス
+    @order = Order.find(params[:id]) #注文データを取得
     @order_details = @order.order_details
-    #注文ステータスを更新
     if @order.update(order_params)
-    #もし入金確認できたら、製作ステータスを製作待ちにする
-      if @order.order_status == "payment_confirm"
-        @order_details.update_all(making_status: :waiting)
+      if @order.order_status == "payment_confirm" #注文ステータスが入金確認と完全一致すると
+        @order_details.update_all(making_status: :waiting) #製作ステータスが製作待ちになる
       end
       redirect_to request.referer
     end

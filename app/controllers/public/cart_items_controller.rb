@@ -1,4 +1,5 @@
 class Public::CartItemsController < ApplicationController
+  before_action :authenticate_customer!
   
   def index
     @cart_items = current_customer.cart_items
@@ -18,6 +19,7 @@ class Public::CartItemsController < ApplicationController
       @cart_item = CartItem.new(cart_item_params)
       @cart_item.customer_id = current_customer.id
       @cart_item.save
+      puts @cart_item.errors.full_messages
       redirect_to cart_items_path
     end
   end

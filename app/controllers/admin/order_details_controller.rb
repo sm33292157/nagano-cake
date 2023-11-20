@@ -1,4 +1,5 @@
 class Admin::OrderDetailsController < ApplicationController
+  before_action :authenticate_admin!
   #製作ステータス
   def update
     #注文詳細データを取得

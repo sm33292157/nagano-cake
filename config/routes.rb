@@ -28,14 +28,15 @@ Rails.application.routes.draw do
     delete 'destroy_all' => 'cart_items#destroy_all'
     resources :customers, only: [:update]
     get '/customers/withdraw_confirm' => 'customers#withdraw_confirm', as: "withdraw_confirm"
-    patch '/customers/withdraw' => 'customers#withdraw', as: "withdraw"
+    patch '/customers/withdraw' => 'customers#withdraw'
     get '/customers/mypage' => 'customers#show'
     get 'customers/infomation/edit' => 'customers#edit'
      get 'orders/thanks' => 'orders#thanks'
     resources :orders, except: [:edit, :update, :destroy]
     post 'orders/confirm' => 'orders#confirm'
     resources :shipping_addresses, expect: [:show, :new]
+    
+    get '/search', to: 'searches#search'
+    get '/genres/genre' => 'genres##genre'
   end
-  
-  get '/genres/genre' => 'genres##genre'
 end

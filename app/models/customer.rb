@@ -8,6 +8,11 @@ class Customer < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :orders, dependent: :destroy
   
+  # 退会済みの会員はログインできないようにする
+  def active_for_authentication?
+    super && (is_active == true ) # 有効でないとログインできない
+  end
+  
   # 漢字
   validates :last_name, presence: true, format: { with: /\A[一-龥]+\z/ }
   # 漢字

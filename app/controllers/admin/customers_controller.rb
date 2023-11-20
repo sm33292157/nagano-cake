@@ -1,4 +1,5 @@
 class Admin::CustomersController < ApplicationController
+  before_action :authenticate_admin!
   
   def index
     @customers = Customer.page(params[:page])
@@ -17,7 +18,7 @@ class Admin::CustomersController < ApplicationController
     if @customer.update(customer_params)
       redirect_to admin_customers_path
     else
-      render 'admin/customers/edit'
+      render edit_admin_customer_path
     end
   end
   
