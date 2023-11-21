@@ -27,6 +27,7 @@ class Public::CartItemsController < ApplicationController
   def update
     @cart_item = CartItem.find(params[:id])
     if @cart_item.update(cart_item_params)
+      flash[:notice] = "商品を更新しました。"
       redirect_to request.referer
     end
   end
@@ -39,7 +40,7 @@ class Public::CartItemsController < ApplicationController
   
   def destroy_all
     current_customer.cart_items.destroy_all
-    redirect_to items_path
+    redirect_to request.referer
   end
   
   private

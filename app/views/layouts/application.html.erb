@@ -23,7 +23,10 @@
       <% end %>
     </header>
     <main>
-    <%= yield %>
+      <% flash.each do |messege_type, messege| %>
+        <div class="flash-message <%= messege_type %> alert alert-danger text-center col-md-4 offset-4"><%= messege %></div>
+      <% end %>
+      <%= yield %>
     </main>
     <footer>
     <div class="flex-container p-3">

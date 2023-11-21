@@ -14,6 +14,7 @@ class Public::CustomersController < ApplicationController
     if params[:id] == "withdraw" # idがwithdrawか否か判別する
       withdraw
     elsif @customer.update(customer_params)
+      flash[:notice] = "会員情報を更新しました。"
       redirect_to customers_mypage_path(current_customer)
     else
       render :edit
@@ -28,6 +29,7 @@ class Public::CustomersController < ApplicationController
     if @customer.update(is_active: false) # 無効状態にする
       reset_session # ログアウト
     end
+    flash[:notice] = "またのご利用をお待ちしております。"
     redirect_to root_path
   end
 
